@@ -7,6 +7,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private Button button;
     private Button button_right;
     private Button button_left;
+    private Button button_close_server;
 
     // public String Message;
     byte[] send_data = new byte[10];
@@ -103,13 +105,18 @@ public class MainActivity extends Activity implements SensorEventListener {
                     + String.format("%.3f", y) + " , "
                     + String.format("%.3f", z));
 
+
+
+/*           SAMO DA NE SALJE KOORDINATE SERVERU   (I DALJE IH ISPISUJE NA EKRANU MOBITELA
+
+
             Client.Message = String.format("%.3f", x) + " "
                     + String.format("%.3f", y) + " " + String.format("%.3f", z);
 
             // Client.Message = Float.toString(x) + " , " + Float.toString(y)
             // + " , " + Float.toString(z);
             // Send message
-            Client.NachrichtSenden();
+            Client.NachrichtSenden();*/
         }
 
     }
@@ -223,8 +230,36 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         });
 
+        button_close_server = (Button) findViewById(R.id.close_button);
+        button_close_server.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Client.Message = "CLOSE";
+                Client.NachrichtSenden();
+            }
+        });
 
 
+
+
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)){
+            TextView volumeText = (TextView) findViewById(R.id.volume);
+            volumeText.setText("DOWN");
+            Client.Message = "DOWN";
+            Client.NachrichtSenden();
+            return true;
+        }
+        if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP)){
+            TextView volumeText = (TextView) findViewById(R.id.volume);
+            volumeText.setText("UP");
+            Client.Message = "UP";
+            Client.NachrichtSenden();
+            return true;
+        }
+        return false;
     }
 
 }
