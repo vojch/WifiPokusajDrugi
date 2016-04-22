@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:editable="true"
-        android:text="@string/hello_world" />
+        android:text="+@string/hello_world" />
 
     <TextView
         android:id="@+id/textView2"
@@ -25,16 +25,17 @@
         android:layout_below="@+id/text1"
         android:layout_marginTop="129dp"
         android:editable="true"
-        android:text="@string/accel" />
+        android:text="+@string/accel" />
 
     <Button
         android:id="@+id/udpbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:text="+@string/udp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:text="@string/udp" />
+        android:layout_alignRight="@+id/text1"
+        android:layout_alignEnd="@+id/text1" />
 
     <EditText
         android:id="@+id/ipadresa"
@@ -75,6 +76,25 @@
         android:layout_marginBottom="46dp"
         android:layout_marginRight="38dp"
         android:text="Right Click" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="VOLUME UP/DOWN ?"
+        android:id="@+id/volume"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/rightclick"
+        android:layout_alignEnd="@+id/rightclick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close Server"
+        android:id="@+id/close_button"
+        android:layout_alignTop="@+id/udpbutton"
+        android:layout_toRightOf="@+id/port"
+        android:layout_toEndOf="@+id/port" />
 
 </RelativeLayout>
 
